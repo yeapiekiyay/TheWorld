@@ -42,5 +42,6 @@
   "publishExclude": [
     "**.user",
     "**.vspscc"
-  ]
+  ],
+  "userSecretsId": "aspnet5-TheWorld-20160410111440"
 }

@@ -87,3 +87,8 @@ ul.menu li a {
         -webkit-transition: margin-left ease .25s;
         transition: margin-left ease .25s;
     }
+
+#map {
+    width: 100%;
+    height: 600px;
+}

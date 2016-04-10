@@ -94,13 +94,21 @@ namespace TheWorld
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public async void Configure(IApplicationBuilder app, WorldContextSeedData seeder, ILoggerFactory loggerFactory)
+        public async void Configure(IApplicationBuilder app, 
+            WorldContextSeedData seeder, 
+            ILoggerFactory loggerFactory, 
+            IHostingEnvironment env)
         {
-#if DEBUG
-            loggerFactory.AddDebug(LogLevel.Warning);
-#else
-            loggerFactory.AddDebug(LogLevel.Error);
-#endif
+            if (env.IsDevelopment())
+            {
+                loggerFactory.AddDebug(LogLevel.Information);
+                app.UseDeveloperExceptionPage();
+            }
+            else
+            {
+                loggerFactory.AddDebug(LogLevel.Error);
+                app.UseExceptionHandler("/App/Error");
+            }
 
             app.UseStaticFiles();
 
